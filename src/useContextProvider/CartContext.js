@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import data from "../data";
 
 const CartContext = createContext();
@@ -9,9 +9,8 @@ const CartContextProvider = ({ children }) => {
 
   useEffect(() => {
     setBooks(data);
-  }, []);
+  }, [data]);
 
-  //sort
 
   //search
   const searchProducts = (text) => {
@@ -72,13 +71,14 @@ const CartContextProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         Books,
+        setBooks,
         handleAddToCart,
         cartBooks,
         addQty,
         subQty,
         handleDecrease,
         removeAll,
-        searchProducts,
+        searchProducts
       }}
     >
       {children}
